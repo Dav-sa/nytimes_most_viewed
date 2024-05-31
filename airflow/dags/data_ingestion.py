@@ -7,9 +7,7 @@ from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 
 from google.cloud import storage
-from airflow.providers.google.cloud.operators.bigquery import (
-    BigQueryCreateExternalTableOperator,
-)
+
 import pyarrow.csv as pv
 import pyarrow.parquet as pq
 
@@ -25,25 +23,32 @@ path_to_local_home = os.environ.get("AIRFLOW_HOME", "/opt/airflow/")
 BIGQUERY_DATASET = os.environ.get("BIGQUERY_DATASET", "trips_data_all")
 
 
-def upload_to_gcs(bucket, object_name, local_file):
-    """
-    Ref: https://cloud.google.com/storage/docs/uploading-objects#storage-upload-object-python
-    :param bucket: GCS bucket name
-    :param object_name: target path & file-name
-    :param local_file: source path & file-name
-    :return:
-    """
-    # WORKAROUND to prevent timeout for files > 6 MB on 800 kbps upload speed.
-    # (Ref: https://github.com/googleapis/python-storage/issues/74)
-    storage.blob._MAX_MULTIPART_SIZE = 5 * 1024 * 1024  # 5 MB
-    storage.blob._DEFAULT_CHUNKSIZE = 5 * 1024 * 1024  # 5 MB
-    # End of Workaround
+def upload_blob(bucket_name, source_file_name, destination_blob_name):
+    """Uploads a file to the bucket."""
+    # The ID of your GCS bucket
+    # bucket_name = "your-bucket-name"
+    # The path to your file to upload
+    # source_file_name = "local/path/to/file"
+    # The ID of your GCS object
+    # destination_blob_name = "storage-object-name"
 
-    client = storage.Client()
-    bucket = client.bucket(bucket)
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
 
-    blob = bucket.blob(object_name)
-    blob.upload_from_filename(local_file)
+    # Optional: set a generation-match precondition to avoid potential race conditions
+    # and data corruptions. The request to upload is aborted if the object's
+    # generation number does not match your precondition. For a destination
+    # object that does not yet exist, set the if_generation_match precondition to 0.
+    # If the destination object already exists in your bucket, set instead a
+    # generation-match precondition using its generation number.
+    generation_match_precondition = 0
+
+    blob.upload_from_filename(
+        source_file_name, if_generation_match=generation_match_precondition
+    )
+
+    print(f"File {source_file_name} uploaded to {destination_blob_name}.")
 
 
 default_args = {
@@ -66,4 +71,14 @@ with DAG(
     download_dataset_task = BashOperator(
         task_id="download_dataset_task",
         bash_command=f"curl -sSL {dataset_url} > {path_to_local_home}/{dataset_file}",
+    )
+
+    upload_to_gcs_task = PythonOperator(
+        task_id="upload_to_gcs_task",
+        python_callable=upload_blob,
+        op_kwargs={
+            "bucket_name": BUCKET,
+            "source_file_name": "/opt/airflow/new_york_times_most_viewed.csv",
+            "destination_blob_name": "new_york_times_most_viewed.csv",
+        },
     )
