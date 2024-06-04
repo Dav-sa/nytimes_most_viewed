@@ -1,0 +1,77 @@
+[2024-06-04 12:52:19,088] {taskinstance.py:1032} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-04T12:51:12.340017+00:00 [queued]>
+[2024-06-04 12:52:19,097] {taskinstance.py:1032} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-04T12:51:12.340017+00:00 [queued]>
+[2024-06-04 12:52:19,097] {taskinstance.py:1238} INFO - 
+--------------------------------------------------------------------------------
+[2024-06-04 12:52:19,097] {taskinstance.py:1239} INFO - Starting attempt 1 of 2
+[2024-06-04 12:52:19,097] {taskinstance.py:1240} INFO - 
+--------------------------------------------------------------------------------
+[2024-06-04 12:52:19,109] {taskinstance.py:1259} INFO - Executing <Task(PythonOperator): transform_dataset_task> on 2024-06-04 12:51:12.340017+00:00
+[2024-06-04 12:52:19,113] {standard_task_runner.py:52} INFO - Started process 15852 to run task
+[2024-06-04 12:52:19,116] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_gcs_dag', 'transform_dataset_task', 'manual__2024-06-04T12:51:12.340017+00:00', '--job-id', '173', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion.py', '--cfg-path', '/tmp/tmpabu6tk5l', '--error-file', '/tmp/tmp3yq24ood']
+[2024-06-04 12:52:19,120] {standard_task_runner.py:77} INFO - Job 173: Subtask transform_dataset_task
+[2024-06-04 12:52:19,169] {logging_mixin.py:109} INFO - Running <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-04T12:51:12.340017+00:00 [running]> on host 7ae6972dd88f
+[2024-06-04 12:52:19,218] {taskinstance.py:1426} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=data_ingestion_gcs_dag
+AIRFLOW_CTX_TASK_ID=transform_dataset_task
+AIRFLOW_CTX_EXECUTION_DATE=2024-06-04T12:51:12.340017+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-06-04T12:51:12.340017+00:00
+[2024-06-04 12:52:19,606] {taskinstance.py:1700} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1329, in _run_raw_task
+    self._execute_task_with_callbacks(context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1455, in _execute_task_with_callbacks
+    result = self._execute_task(context, self.task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1511, in _execute_task
+    result = execute_callable(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 174, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 185, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/data_ingestion.py", line 45, in transform_dataset
+    df = df[cols]
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/frame.py", line 2912, in __getitem__
+    indexer = self.loc._get_listlike_indexer(key, axis=1, raise_missing=True)[1]
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 1254, in _get_listlike_indexer
+    self._validate_read_indexer(keyarr, indexer, axis, raise_missing=raise_missing)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 1298, in _validate_read_indexer
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['title', 'abstract', 'published_date', 'adx_keywords'], dtype='object')] are in the [columns]"
+[2024-06-04 12:52:19,619] {taskinstance.py:1277} INFO - Marking task as UP_FOR_RETRY. dag_id=data_ingestion_gcs_dag, task_id=transform_dataset_task, execution_date=20240604T125112, start_date=20240604T125219, end_date=20240604T125219
+[2024-06-04 12:52:19,631] {standard_task_runner.py:92} ERROR - Failed to execute job 173 for task transform_dataset_task
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/task/task_runner/standard_task_runner.py", line 85, in _start_by_fork
+    args.func(args, dag=self.dag)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/cli/cli_parser.py", line 48, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/utils/cli.py", line 92, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/cli/commands/task_command.py", line 298, in task_run
+    _run_task_by_selected_method(args, dag, ti)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/cli/commands/task_command.py", line 107, in _run_task_by_selected_method
+    _run_raw_task(args, ti)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/cli/commands/task_command.py", line 184, in _run_raw_task
+    error_file=args.error_file,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/utils/session.py", line 70, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1329, in _run_raw_task
+    self._execute_task_with_callbacks(context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1455, in _execute_task_with_callbacks
+    result = self._execute_task(context, self.task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1511, in _execute_task
+    result = execute_callable(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 174, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 185, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/data_ingestion.py", line 45, in transform_dataset
+    df = df[cols]
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/frame.py", line 2912, in __getitem__
+    indexer = self.loc._get_listlike_indexer(key, axis=1, raise_missing=True)[1]
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 1254, in _get_listlike_indexer
+    self._validate_read_indexer(keyarr, indexer, axis, raise_missing=raise_missing)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 1298, in _validate_read_indexer
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['title', 'abstract', 'published_date', 'adx_keywords'], dtype='object')] are in the [columns]"
+[2024-06-04 12:52:19,649] {local_task_job.py:154} INFO - Task exited with return code 1
+[2024-06-04 12:52:19,679] {local_task_job.py:264} INFO - 0 downstream tasks scheduled from follow-on schedule check

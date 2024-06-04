@@ -10,12 +10,13 @@ from google.cloud import storage
 
 import pyarrow.csv as pv
 import pyarrow.parquet as pq
+import pandas as pd
 
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 NYT_KEY = os.environ.get("NYT_KEY")
 BUCKET = os.environ.get("GCP_GCS_BUCKET")
 
-dataset_file = "new_york_times_most_viewed.csv"
+dataset_file = "new_york_times_most_viewed.json"
 dataset_url = (
     f"https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key={NYT_KEY}"
 )
@@ -25,23 +26,10 @@ BIGQUERY_DATASET = os.environ.get("BIGQUERY_DATASET", "trips_data_all")
 
 def upload_blob(bucket_name, source_file_name, destination_blob_name):
     """Uploads a file to the bucket."""
-    # The ID of your GCS bucket
-    # bucket_name = "your-bucket-name"
-    # The path to your file to upload
-    # source_file_name = "local/path/to/file"
-    # The ID of your GCS object
-    # destination_blob_name = "storage-object-name"
 
     storage_client = storage.Client()
     bucket = storage_client.bucket(bucket_name)
     blob = bucket.blob(destination_blob_name)
-
-    # Optional: set a generation-match precondition to avoid potential race conditions
-    # and data corruptions. The request to upload is aborted if the object's
-    # generation number does not match your precondition. For a destination
-    # object that does not yet exist, set the if_generation_match precondition to 0.
-    # If the destination object already exists in your bucket, set instead a
-    # generation-match precondition using its generation number.
     generation_match_precondition = 0
 
     blob.upload_from_filename(
@@ -49,6 +37,29 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
     )
 
     print(f"File {source_file_name} uploaded to {destination_blob_name}.")
+
+
+["title", "abstract", "adx_keywords", "des_facet", "media"]
+
+
+def transform_dataset():
+    df = pd.read_json("/opt/airflow/new_york_times_most_viewed.json")
+    df = df["results"]
+    filtered_data = []
+
+    for item in df:
+        filtered_item = {
+            key: item[key]
+            for key in ["title", "abstract", "des_facet", "media"]
+            if key in item
+        }
+        filtered_data.append(filtered_item)
+
+    filtered_df = pd.DataFrame(filtered_data)
+
+    filtered_df.to_json(
+        "/opt/airflow/transformed_data.json", orient="records", lines=True
+    )
 
 
 default_args = {
@@ -73,6 +84,13 @@ with DAG(
         bash_command=f"curl -sSL {dataset_url} > {path_to_local_home}/{dataset_file}",
     )
 
+    transform_dataset_task = PythonOperator(
+        task_id="transform_dataset_task", python_callable=transform_dataset
+    )
+
+    download_dataset_task >> transform_dataset_task
+
+"""
     upload_to_gcs_task = PythonOperator(
         task_id="upload_to_gcs_task",
         python_callable=upload_blob,
@@ -82,3 +100,4 @@ with DAG(
             "destination_blob_name": "new_york_times_most_viewed.csv",
         },
     )
+"""
