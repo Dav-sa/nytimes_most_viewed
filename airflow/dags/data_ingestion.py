@@ -1,16 +1,15 @@
 import os
 import logging
-
 from airflow import DAG
 from airflow.utils.dates import days_ago
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
-
 from google.cloud import storage
-
 import pyarrow.csv as pv
 import pyarrow.parquet as pq
 import pandas as pd
+from transform import transform_dataset
+from load_to_bigquery import load_data_to_bq
 
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 NYT_KEY = os.environ.get("NYT_KEY")
@@ -39,29 +38,6 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
     print(f"File {source_file_name} uploaded to {destination_blob_name}.")
 
 
-["title", "abstract", "adx_keywords", "des_facet", "media"]
-
-
-def transform_dataset():
-    df = pd.read_json("/opt/airflow/new_york_times_most_viewed.json")
-    df = df["results"]
-    filtered_data = []
-
-    for item in df:
-        filtered_item = {
-            key: item[key]
-            for key in ["title", "abstract", "des_facet", "media"]
-            if key in item
-        }
-        filtered_data.append(filtered_item)
-
-    filtered_df = pd.DataFrame(filtered_data)
-
-    filtered_df.to_json(
-        "/opt/airflow/transformed_data.json", orient="records", lines=True
-    )
-
-
 default_args = {
     "owner": "airflow",
     "start_date": days_ago(1),
@@ -69,7 +45,6 @@ default_args = {
     "retries": 1,
 }
 
-# NOTE: DAG declaration - using a Context Manager (an implicit way)
 with DAG(
     dag_id="data_ingestion_gcs_dag",
     schedule_interval="@daily",
@@ -88,16 +63,28 @@ with DAG(
         task_id="transform_dataset_task", python_callable=transform_dataset
     )
 
-    download_dataset_task >> transform_dataset_task
-
-"""
     upload_to_gcs_task = PythonOperator(
         task_id="upload_to_gcs_task",
         python_callable=upload_blob,
         op_kwargs={
             "bucket_name": BUCKET,
-            "source_file_name": "/opt/airflow/new_york_times_most_viewed.csv",
-            "destination_blob_name": "new_york_times_most_viewed.csv",
+            "source_file_name": "/opt/airflow/transformed_data.json",
+            "destination_blob_name": "transformed_data.json",
         },
     )
-"""
+
+    load_data_to_bigquery_task = PythonOperator(
+        task_id="load_data_to_bq_task",
+        python_callable=load_data_to_bq,
+        op_kwargs={
+            "uri": "gs://nyt_most_viewved_bucket/transformed_data.json",
+            "table_id": "parisvelib.ny_most_viewed.nyt_most_viewed_articles",
+        },
+    )
+
+    (
+        download_dataset_task
+        >> transform_dataset_task
+        >> upload_to_gcs_task
+        >> load_data_to_bigquery_task
+    )
