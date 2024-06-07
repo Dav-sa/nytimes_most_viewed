@@ -1,0 +1,23 @@
+[2024-06-07 14:56:39,127] {taskinstance.py:1032} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-07T14:56:34.425492+00:00 [queued]>
+[2024-06-07 14:56:39,135] {taskinstance.py:1032} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-07T14:56:34.425492+00:00 [queued]>
+[2024-06-07 14:56:39,135] {taskinstance.py:1238} INFO - 
+--------------------------------------------------------------------------------
+[2024-06-07 14:56:39,135] {taskinstance.py:1239} INFO - Starting attempt 1 of 2
+[2024-06-07 14:56:39,135] {taskinstance.py:1240} INFO - 
+--------------------------------------------------------------------------------
+[2024-06-07 14:56:39,146] {taskinstance.py:1259} INFO - Executing <Task(PythonOperator): transform_dataset_task> on 2024-06-07 14:56:34.425492+00:00
+[2024-06-07 14:56:39,151] {standard_task_runner.py:52} INFO - Started process 7550 to run task
+[2024-06-07 14:56:39,154] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_gcs_dag', 'transform_dataset_task', 'manual__2024-06-07T14:56:34.425492+00:00', '--job-id', '304', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion.py', '--cfg-path', '/tmp/tmpg0tvx1je', '--error-file', '/tmp/tmpjdgo8g3z']
+[2024-06-07 14:56:39,157] {standard_task_runner.py:77} INFO - Job 304: Subtask transform_dataset_task
+[2024-06-07 14:56:39,205] {logging_mixin.py:109} INFO - Running <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-07T14:56:34.425492+00:00 [running]> on host fbb305b57b58
+[2024-06-07 14:56:39,253] {taskinstance.py:1426} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=data_ingestion_gcs_dag
+AIRFLOW_CTX_TASK_ID=transform_dataset_task
+AIRFLOW_CTX_EXECUTION_DATE=2024-06-07T14:56:34.425492+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-06-07T14:56:34.425492+00:00
+[2024-06-07 14:56:39,254] {logging_mixin.py:109} INFO - ['dags', 'logs', 'new_york_times_most_viewed_2024-06-07_14-47-21.json', 'new_york_times_most_viewed_2024-06-07_14-45-48.json', 'webserver_config.py', '***.cfg', 'new_york_times_most_viewed_2024-06-07_14-51-55.json', 'new_york_times_most_viewed_2024-06-07_14-56-36.json', 'new_york_times_most_viewed_2024-06-07_14-39-59.json', 'new_york_times_most_viewed_2024-06-07_14-45-16.json', 'plugins', 'requirements.txt']
+[2024-06-07 14:56:39,254] {python.py:175} INFO - Done. Returned value was: None
+[2024-06-07 14:56:39,266] {taskinstance.py:1277} INFO - Marking task as SUCCESS. dag_id=data_ingestion_gcs_dag, task_id=transform_dataset_task, execution_date=20240607T145634, start_date=20240607T145639, end_date=20240607T145639
+[2024-06-07 14:56:39,289] {local_task_job.py:154} INFO - Task exited with return code 0
+[2024-06-07 14:56:39,325] {local_task_job.py:264} INFO - 1 downstream tasks scheduled from follow-on schedule check

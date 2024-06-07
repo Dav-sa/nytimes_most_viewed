@@ -1,7 +1,12 @@
 from google.cloud import bigquery
+import os
 
 
 def load_data_to_bq(uri, table_id):
+    path_to_local_home = os.environ.get("AIRFLOW_HOME", "/opt/airflow/")
+    list_all_files = os.listdir(path_to_local_home)
+    latest_file = max(list_all_files, key=os.path.getctime)
+    uri = uri + latest_file
 
     client = bigquery.Client()
 
@@ -13,6 +18,6 @@ def load_data_to_bq(uri, table_id):
 
     load_job = client.load_table_from_uri(uri, table_id, job_config=job_config)
 
-    load_job.result()  # Waits for the job to complete.
+    load_job.result()
 
     print(f"Loaded data from {uri} to {table_id}")

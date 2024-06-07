@@ -1,5 +1,5 @@
 import os
-import logging
+from datetime import datetime
 from airflow import DAG
 from airflow.utils.dates import days_ago
 from airflow.operators.bash import BashOperator
@@ -14,8 +14,11 @@ from load_to_bigquery import load_data_to_bq
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 NYT_KEY = os.environ.get("NYT_KEY")
 BUCKET = os.environ.get("GCP_GCS_BUCKET")
+now = datetime.now()
+date_time_str = now.strftime("%Y-%m-%d_%H-%M-%S")
 
-dataset_file = "new_york_times_most_viewed.json"
+dataset_file = f"new_york_times_most_viewed_{date_time_str}.json"
+
 dataset_url = (
     f"https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key={NYT_KEY}"
 )
@@ -24,18 +27,20 @@ BIGQUERY_DATASET = os.environ.get("BIGQUERY_DATASET", "trips_data_all")
 
 
 def upload_blob(bucket_name, source_file_name, destination_blob_name):
-    """Uploads a file to the bucket."""
+    path_to_local_home = os.environ.get("AIRFLOW_HOME", "/opt/airflow/")
+    list_all_files = os.listdir(path_to_local_home)
+    latest_file = max(list_all_files, key=os.path.getctime)
 
     storage_client = storage.Client()
     bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(destination_blob_name)
+    blob = bucket.blob(latest_file)
     generation_match_precondition = 0
 
     blob.upload_from_filename(
-        source_file_name, if_generation_match=generation_match_precondition
+        latest_file, if_generation_match=generation_match_precondition
     )
 
-    print(f"File {source_file_name} uploaded to {destination_blob_name}.")
+    print(f"File {latest_file} uploaded to {latest_file}.")
 
 
 default_args = {
@@ -57,10 +62,12 @@ with DAG(
     download_dataset_task = BashOperator(
         task_id="download_dataset_task",
         bash_command=f"curl -sSL {dataset_url} > {path_to_local_home}/{dataset_file}",
+        do_xcom_push=True,
     )
 
     transform_dataset_task = PythonOperator(
-        task_id="transform_dataset_task", python_callable=transform_dataset
+        task_id="transform_dataset_task",
+        python_callable=transform_dataset,
     )
 
     upload_to_gcs_task = PythonOperator(
@@ -68,8 +75,8 @@ with DAG(
         python_callable=upload_blob,
         op_kwargs={
             "bucket_name": BUCKET,
-            "source_file_name": "/opt/airflow/transformed_data.json",
-            "destination_blob_name": "transformed_data.json",
+            "source_file_name": f"/opt/airflow/{dataset_file}",
+            "destination_blob_name": f"{dataset_file}",
         },
     )
 
@@ -77,7 +84,7 @@ with DAG(
         task_id="load_data_to_bq_task",
         python_callable=load_data_to_bq,
         op_kwargs={
-            "uri": "gs://nyt_most_viewved_bucket/transformed_data.json",
+            "uri": "gs://nyt_most_viewved_bucket/",
             "table_id": "parisvelib.ny_most_viewed.nyt_most_viewed_articles",
         },
     )

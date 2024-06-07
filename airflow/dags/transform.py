@@ -8,10 +8,16 @@ from google.cloud import storage
 import pyarrow.csv as pv
 import pyarrow.parquet as pq
 import pandas as pd
+from os import path
 
 
 def transform_dataset():
-    df = pd.read_json("/opt/airflow/new_york_times_most_viewed.json")
+    path_to_local_home = os.environ.get("AIRFLOW_HOME", "/opt/airflow/")
+    list_all_files = os.listdir(path_to_local_home)
+
+    latest_file = max(list_all_files, key=os.path.getctime)
+
+    df = pd.read_json(latest_file)
     df = df["results"]
     filtered_data = []
 
@@ -24,7 +30,4 @@ def transform_dataset():
         filtered_data.append(filtered_item)
 
     filtered_df = pd.DataFrame(filtered_data)
-
-    filtered_df.to_json(
-        "/opt/airflow/transformed_data.json", orient="records", lines=True
-    )
+    filtered_df.to_json(f"/opt/airflow/{latest_file}", orient="records", lines=True)

@@ -1,0 +1,22 @@
+[2024-06-07 13:00:18,955] {taskinstance.py:1032} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-07T13:00:14.826328+00:00 [queued]>
+[2024-06-07 13:00:18,963] {taskinstance.py:1032} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-07T13:00:14.826328+00:00 [queued]>
+[2024-06-07 13:00:18,963] {taskinstance.py:1238} INFO - 
+--------------------------------------------------------------------------------
+[2024-06-07 13:00:18,964] {taskinstance.py:1239} INFO - Starting attempt 1 of 2
+[2024-06-07 13:00:18,964] {taskinstance.py:1240} INFO - 
+--------------------------------------------------------------------------------
+[2024-06-07 13:00:18,975] {taskinstance.py:1259} INFO - Executing <Task(PythonOperator): transform_dataset_task> on 2024-06-07 13:00:14.826328+00:00
+[2024-06-07 13:00:18,980] {standard_task_runner.py:52} INFO - Started process 2097 to run task
+[2024-06-07 13:00:18,983] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_gcs_dag', 'transform_dataset_task', 'manual__2024-06-07T13:00:14.826328+00:00', '--job-id', '267', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion.py', '--cfg-path', '/tmp/tmp1dyrk87m', '--error-file', '/tmp/tmppq9x9t_n']
+[2024-06-07 13:00:18,986] {standard_task_runner.py:77} INFO - Job 267: Subtask transform_dataset_task
+[2024-06-07 13:00:19,039] {logging_mixin.py:109} INFO - Running <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-07T13:00:14.826328+00:00 [running]> on host fbb305b57b58
+[2024-06-07 13:00:19,093] {taskinstance.py:1426} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=data_ingestion_gcs_dag
+AIRFLOW_CTX_TASK_ID=transform_dataset_task
+AIRFLOW_CTX_EXECUTION_DATE=2024-06-07T13:00:14.826328+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-06-07T13:00:14.826328+00:00
+[2024-06-07 13:00:19,121] {python.py:175} INFO - Done. Returned value was: None
+[2024-06-07 13:00:19,133] {taskinstance.py:1277} INFO - Marking task as SUCCESS. dag_id=data_ingestion_gcs_dag, task_id=transform_dataset_task, execution_date=20240607T130014, start_date=20240607T130018, end_date=20240607T130019
+[2024-06-07 13:00:19,158] {local_task_job.py:154} INFO - Task exited with return code 0
+[2024-06-07 13:00:19,195] {local_task_job.py:264} INFO - 1 downstream tasks scheduled from follow-on schedule check

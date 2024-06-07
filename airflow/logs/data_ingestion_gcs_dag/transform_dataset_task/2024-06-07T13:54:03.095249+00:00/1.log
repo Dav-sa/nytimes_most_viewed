@@ -1,0 +1,106 @@
+[2024-06-07 13:54:08,458] {taskinstance.py:1032} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-07T13:54:03.095249+00:00 [queued]>
+[2024-06-07 13:54:08,469] {taskinstance.py:1032} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-07T13:54:03.095249+00:00 [queued]>
+[2024-06-07 13:54:08,469] {taskinstance.py:1238} INFO - 
+--------------------------------------------------------------------------------
+[2024-06-07 13:54:08,470] {taskinstance.py:1239} INFO - Starting attempt 1 of 2
+[2024-06-07 13:54:08,470] {taskinstance.py:1240} INFO - 
+--------------------------------------------------------------------------------
+[2024-06-07 13:54:08,483] {taskinstance.py:1259} INFO - Executing <Task(PythonOperator): transform_dataset_task> on 2024-06-07 13:54:03.095249+00:00
+[2024-06-07 13:54:08,489] {standard_task_runner.py:52} INFO - Started process 1992 to run task
+[2024-06-07 13:54:08,492] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_gcs_dag', 'transform_dataset_task', 'manual__2024-06-07T13:54:03.095249+00:00', '--job-id', '279', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion.py', '--cfg-path', '/tmp/tmp5g90ye3i', '--error-file', '/tmp/tmpfpj2vb_3']
+[2024-06-07 13:54:08,497] {standard_task_runner.py:77} INFO - Job 279: Subtask transform_dataset_task
+[2024-06-07 13:54:08,550] {logging_mixin.py:109} INFO - Running <TaskInstance: data_ingestion_gcs_dag.transform_dataset_task manual__2024-06-07T13:54:03.095249+00:00 [running]> on host fbb305b57b58
+[2024-06-07 13:54:08,606] {taskinstance.py:1426} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=data_ingestion_gcs_dag
+AIRFLOW_CTX_TASK_ID=transform_dataset_task
+AIRFLOW_CTX_EXECUTION_DATE=2024-06-07T13:54:03.095249+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-06-07T13:54:03.095249+00:00
+[2024-06-07 13:54:08,617] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-06-07 13:54:08,618] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'next_ds' from the template is deprecated and will be removed in a future version. Please use '{{ data_interval_end | ds }}' instead.
+[2024-06-07 13:54:08,619] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'next_ds_nodash' from the template is deprecated and will be removed in a future version. Please use '{{ data_interval_end | ds_nodash }}' instead.
+[2024-06-07 13:54:08,619] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'next_execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_end' instead.
+[2024-06-07 13:54:08,620] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'prev_ds' from the template is deprecated and will be removed in a future version.
+[2024-06-07 13:54:08,621] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'prev_ds_nodash' from the template is deprecated and will be removed in a future version.
+[2024-06-07 13:54:08,622] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'prev_execution_date' from the template is deprecated and will be removed in a future version.
+[2024-06-07 13:54:08,622] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'prev_execution_date_success' from the template is deprecated and will be removed in a future version. Please use 'prev_data_interval_start_success' instead.
+[2024-06-07 13:54:08,623] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'tomorrow_ds' from the template is deprecated and will be removed in a future version.
+[2024-06-07 13:54:08,624] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'tomorrow_ds_nodash' from the template is deprecated and will be removed in a future version.
+[2024-06-07 13:54:08,625] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'yesterday_ds' from the template is deprecated and will be removed in a future version.
+[2024-06-07 13:54:08,626] {logging_mixin.py:109} WARNING - /home/***/.local/lib/python3.6/site-packages/***/utils/context.py:152 AirflowContextDeprecationWarning: Accessing 'yesterday_ds_nodash' from the template is deprecated and will be removed in a future version.
+[2024-06-07 13:54:08,634] {logging_mixin.py:109} INFO - 
+[2024-06-07 13:54:08,634] {taskinstance.py:1700} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1329, in _run_raw_task
+    self._execute_task_with_callbacks(context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1455, in _execute_task_with_callbacks
+    result = self._execute_task(context, self.task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1511, in _execute_task
+    result = execute_callable(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 174, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 185, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/data_ingestion.py", line 35, in transform_dataset
+    df = pd.read_json(downloaded_file)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/util/_decorators.py", line 199, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/util/_decorators.py", line 296, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/json/_json.py", line 618, in read_json
+    result = json_reader.read()
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/json/_json.py", line 755, in read
+    obj = self._get_object_parser(self.data)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/json/_json.py", line 777, in _get_object_parser
+    obj = FrameParser(json, **kwargs).parse()
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/json/_json.py", line 886, in parse
+    self._parse_no_numpy()
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/json/_json.py", line 1119, in _parse_no_numpy
+    loads(json, precise_float=self.precise_float), dtype=None
+ValueError: Expected object or value
+[2024-06-07 13:54:08,646] {taskinstance.py:1277} INFO - Marking task as UP_FOR_RETRY. dag_id=data_ingestion_gcs_dag, task_id=transform_dataset_task, execution_date=20240607T135403, start_date=20240607T135408, end_date=20240607T135408
+[2024-06-07 13:54:08,658] {standard_task_runner.py:92} ERROR - Failed to execute job 279 for task transform_dataset_task
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/task/task_runner/standard_task_runner.py", line 85, in _start_by_fork
+    args.func(args, dag=self.dag)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/cli/cli_parser.py", line 48, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/utils/cli.py", line 92, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/cli/commands/task_command.py", line 298, in task_run
+    _run_task_by_selected_method(args, dag, ti)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/cli/commands/task_command.py", line 107, in _run_task_by_selected_method
+    _run_raw_task(args, ti)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/cli/commands/task_command.py", line 184, in _run_raw_task
+    error_file=args.error_file,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/utils/session.py", line 70, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1329, in _run_raw_task
+    self._execute_task_with_callbacks(context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1455, in _execute_task_with_callbacks
+    result = self._execute_task(context, self.task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1511, in _execute_task
+    result = execute_callable(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 174, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 185, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/data_ingestion.py", line 35, in transform_dataset
+    df = pd.read_json(downloaded_file)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/util/_decorators.py", line 199, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/util/_decorators.py", line 296, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/json/_json.py", line 618, in read_json
+    result = json_reader.read()
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/json/_json.py", line 755, in read
+    obj = self._get_object_parser(self.data)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/json/_json.py", line 777, in _get_object_parser
+    obj = FrameParser(json, **kwargs).parse()
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/json/_json.py", line 886, in parse
+    self._parse_no_numpy()
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/json/_json.py", line 1119, in _parse_no_numpy
+    loads(json, precise_float=self.precise_float), dtype=None
+ValueError: Expected object or value
+[2024-06-07 13:54:08,668] {local_task_job.py:154} INFO - Task exited with return code 1
+[2024-06-07 13:54:08,704] {local_task_job.py:264} INFO - 0 downstream tasks scheduled from follow-on schedule check
