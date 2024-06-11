@@ -52,7 +52,7 @@ default_args = {
 
 with DAG(
     dag_id="data_ingestion_gcs_dag",
-    schedule_interval="@daily",
+    schedule_interval="0 9 * * *",
     default_args=default_args,
     catchup=False,
     max_active_runs=1,
