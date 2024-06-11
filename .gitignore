@@ -1,2 +1,2 @@
 ./terraform/variables.tf
-/airflow/docker-compose.yaml
+./airflow/docker-compose.yaml
