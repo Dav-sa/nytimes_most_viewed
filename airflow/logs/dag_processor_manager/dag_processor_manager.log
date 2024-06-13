@@ -19562,3 +19562,267 @@ File Path                              PID  Runtime      # DAGs    # Errors  Las
 [2024-06-13 12:18:03,166] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 12:13:03.166591+00:00
 [2024-06-13 12:18:13,271] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
 [2024-06-13 12:18:13,271] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 12:13:13.271414+00:00
+[2024-06-13 14:42:53,612] {manager.py:514} INFO - Processing files using up to 2 processes at a time 
+[2024-06-13 14:42:53,612] {manager.py:515} INFO - Process each file at most once every 30 seconds
+[2024-06-13 14:42:53,613] {manager.py:517} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2024-06-13 14:42:53,613] {manager.py:663} INFO - Searching for files in /opt/airflow/dags
+[2024-06-13 14:42:53,616] {manager.py:666} INFO - There are 2 files in /opt/airflow/dags
+[2024-06-13 14:42:53,662] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:42:53,664] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:37:53.663940+00:00
+[2024-06-13 14:42:53,697] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                              PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/transform.py         179  0.03s             0           0
+/opt/airflow/dags/data_ingestion.py    176  0.04s             0           0
+================================================================================
+[2024-06-13 14:43:04,103] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:43:04,104] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:38:04.104156+00:00
+[2024-06-13 14:44:27,069] {manager.py:514} INFO - Processing files using up to 2 processes at a time 
+[2024-06-13 14:44:27,070] {manager.py:515} INFO - Process each file at most once every 30 seconds
+[2024-06-13 14:44:27,070] {manager.py:517} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2024-06-13 14:44:27,070] {manager.py:663} INFO - Searching for files in /opt/airflow/dags
+[2024-06-13 14:44:27,072] {manager.py:666} INFO - There are 2 files in /opt/airflow/dags
+[2024-06-13 14:44:27,122] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:44:27,122] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:39:27.122939+00:00
+[2024-06-13 14:44:27,165] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                              PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/transform.py         179  0.04s             0           0
+/opt/airflow/dags/data_ingestion.py    176  0.05s             0           0
+================================================================================
+[2024-06-13 14:44:37,188] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:44:37,188] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:39:37.188375+00:00
+[2024-06-13 14:44:47,215] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:44:47,216] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:39:47.216138+00:00
+[2024-06-13 14:44:57,242] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:44:57,242] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:39:57.242357+00:00
+[2024-06-13 14:44:57,249] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  2.25s           2024-06-13T14:44:29
+/opt/airflow/dags/data_ingestion.py                           1           0  3.16s           2024-06-13T14:44:30
+================================================================================
+[2024-06-13 14:45:07,349] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:45:07,350] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:40:07.350261+00:00
+[2024-06-13 14:45:17,379] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:45:17,379] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:40:17.379510+00:00
+[2024-06-13 14:45:27,407] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:45:27,407] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:40:27.407663+00:00
+[2024-06-13 14:45:27,414] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  0.98s           2024-06-13T14:45:01
+/opt/airflow/dags/data_ingestion.py                           1           0  1.33s           2024-06-13T14:45:01
+================================================================================
+[2024-06-13 14:45:37,482] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:45:37,483] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:40:37.483358+00:00
+[2024-06-13 14:45:47,505] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:45:47,505] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:40:47.505238+00:00
+[2024-06-13 14:45:57,529] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:45:57,530] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:40:57.530177+00:00
+[2024-06-13 14:45:57,537] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  1.05s           2024-06-13T14:45:32
+/opt/airflow/dags/data_ingestion.py                           1           0  1.49s           2024-06-13T14:45:33
+================================================================================
+[2024-06-13 14:46:08,264] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:46:08,264] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:41:08.264549+00:00
+[2024-06-13 14:46:18,292] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:46:18,292] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:41:18.292348+00:00
+[2024-06-13 14:46:28,320] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:46:28,320] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:41:28.320338+00:00
+[2024-06-13 14:46:28,328] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  0.71s           2024-06-13T14:46:03
+/opt/airflow/dags/data_ingestion.py                           1           0  1.13s           2024-06-13T14:46:04
+================================================================================
+[2024-06-13 14:46:38,422] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:46:38,422] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:41:38.422950+00:00
+[2024-06-13 14:46:48,448] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:46:48,448] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:41:48.448268+00:00
+[2024-06-13 14:46:58,467] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:46:58,468] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:41:58.468229+00:00
+[2024-06-13 14:46:58,476] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  0.74s           2024-06-13T14:46:34
+/opt/airflow/dags/data_ingestion.py                           1           0  1.51s           2024-06-13T14:46:35
+================================================================================
+[2024-06-13 14:47:08,986] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:47:08,986] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:42:08.986716+00:00
+[2024-06-13 14:47:19,020] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:47:19,020] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:42:19.020493+00:00
+[2024-06-13 14:47:29,054] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:47:29,054] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:42:29.054643+00:00
+[2024-06-13 14:47:29,061] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  0.94s           2024-06-13T14:47:05
+/opt/airflow/dags/data_ingestion.py                           1           0  1.06s           2024-06-13T14:47:07
+================================================================================
+[2024-06-13 14:47:39,093] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:47:39,093] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:42:39.093616+00:00
+[2024-06-13 14:47:49,124] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:47:49,124] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:42:49.124316+00:00
+[2024-06-13 14:47:59,152] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:47:59,153] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:42:59.153430+00:00
+[2024-06-13 14:47:59,164] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  0.55s           2024-06-13T14:47:36
+/opt/airflow/dags/data_ingestion.py                           1           0  1.08s           2024-06-13T14:47:38
+================================================================================
+[2024-06-13 14:48:09,213] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:48:09,214] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:43:09.214453+00:00
+[2024-06-13 14:48:20,036] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:48:20,037] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:43:20.037136+00:00
+[2024-06-13 14:48:30,069] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:48:30,069] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:43:30.069239+00:00
+[2024-06-13 14:48:30,077] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  0.83s           2024-06-13T14:48:08
+/opt/airflow/dags/data_ingestion.py                           1           0  1.92s           2024-06-13T14:48:10
+================================================================================
+[2024-06-13 14:48:40,169] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:48:40,169] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:43:40.169792+00:00
+[2024-06-13 14:48:50,206] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:48:50,207] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:43:50.206980+00:00
+[2024-06-13 14:49:00,238] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:49:00,238] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:44:00.238469+00:00
+[2024-06-13 14:49:00,245] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  0.62s           2024-06-13T14:48:38
+/opt/airflow/dags/data_ingestion.py                           1           0  1.09s           2024-06-13T14:48:41
+================================================================================
+[2024-06-13 14:49:07,726] {manager.py:495} INFO - Exiting gracefully upon receiving signal 15
+[2024-06-13 14:50:04,212] {manager.py:514} INFO - Processing files using up to 2 processes at a time 
+[2024-06-13 14:50:04,212] {manager.py:515} INFO - Process each file at most once every 30 seconds
+[2024-06-13 14:50:04,212] {manager.py:517} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2024-06-13 14:50:04,212] {manager.py:663} INFO - Searching for files in /opt/airflow/dags
+[2024-06-13 14:50:04,214] {manager.py:666} INFO - There are 2 files in /opt/airflow/dags
+[2024-06-13 14:50:04,280] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:50:04,280] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:45:04.280935+00:00
+[2024-06-13 14:50:04,314] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                              PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/transform.py         169  0.04s             0           0
+/opt/airflow/dags/data_ingestion.py    166  0.04s             0           0
+================================================================================
+[2024-06-13 14:50:14,330] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:50:14,330] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:45:14.330614+00:00
+[2024-06-13 14:50:24,350] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:50:24,350] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:45:24.350366+00:00
+[2024-06-13 14:50:34,369] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:50:34,369] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:45:34.369242+00:00
+[2024-06-13 14:50:34,375] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  1.74s           2024-06-13T14:50:06
+/opt/airflow/dags/data_ingestion.py                           1           0  2.72s           2024-06-13T14:50:06
+================================================================================
+[2024-06-13 14:50:44,397] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:50:44,398] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:45:44.398126+00:00
+[2024-06-13 14:50:54,426] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:50:54,426] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:45:54.426471+00:00
+[2024-06-13 14:51:04,456] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:51:04,456] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:46:04.456221+00:00
+[2024-06-13 14:51:04,463] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  0.69s           2024-06-13T14:50:36
+/opt/airflow/dags/data_ingestion.py                           1           0  1.05s           2024-06-13T14:50:38
+================================================================================
+[2024-06-13 14:51:14,490] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:51:14,490] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:46:14.490556+00:00
+[2024-06-13 14:51:24,519] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:51:24,523] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:46:24.523239+00:00
+[2024-06-13 14:51:34,549] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:51:34,549] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:46:34.549858+00:00
+[2024-06-13 14:51:34,556] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  0.84s           2024-06-13T14:51:08
+/opt/airflow/dags/data_ingestion.py                           1           0  1.19s           2024-06-13T14:51:09
+================================================================================
+[2024-06-13 14:51:44,715] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:51:44,715] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:46:44.715605+00:00
+[2024-06-13 14:51:54,744] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:51:54,744] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:46:54.744369+00:00
+[2024-06-13 14:52:04,776] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:52:04,776] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:47:04.776691+00:00
+[2024-06-13 14:52:04,789] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  0.90s           2024-06-13T14:51:39
+/opt/airflow/dags/data_ingestion.py                           1           0  1.14s           2024-06-13T14:51:40
+================================================================================
+[2024-06-13 14:52:15,158] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:52:15,159] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:47:15.159384+00:00
+[2024-06-13 14:52:25,210] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:52:25,212] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:47:25.212497+00:00
+[2024-06-13 14:52:35,244] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:52:35,245] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:47:35.245335+00:00
+[2024-06-13 14:52:35,253] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/transform.py                                0           0  1.35s           2024-06-13T14:52:11
+/opt/airflow/dags/data_ingestion.py                           1           0  1.58s           2024-06-13T14:52:12
+================================================================================
+[2024-06-13 14:52:45,882] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2024-06-13 14:52:45,883] {manager.py:1069} INFO - Failing jobs without heartbeat after 2024-06-13 14:47:45.883138+00:00
+[2024-06-13 14:52:49,710] {manager.py:495} INFO - Exiting gracefully upon receiving signal 15

@@ -58,9 +58,9 @@ x-airflow-common: &airflow-common
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     GOOGLE_APPLICATION_CREDENTIALS: /google/parisvelib-355a5e336d2b.json
     AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: "google-cloud-platform://?extra__google_cloud_platform__key_path=/google/parisvelib-355a5e336d2b.json"
-    GCP_PROJECT_ID: "parisvelib"
-    GCP_GCS_BUCKET: "nyt_most_viewved_bucket"
-    NYT_KEY: "6RmAG7GJNkjXhOt5pYF8xPooXDpEpWt1"
+    GCP_PROJECT_ID: $GCP_PROJECT_ID
+    GCP_GCS_BUCKET: $GCP_GCS_BUCKET
+    NYT_KEY: $NYT_KEY
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
