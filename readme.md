@@ -15,5 +15,5 @@ NYTimes data est une application permettant d'analyser chaque jour les articles 
 
 - La pipeline est déployée sur une machine virtuelle Hetzner.
 - La CI/CD de GitHub Actions et d'ArgoCD permettent d'automatiser la mise en production de modifications.
-- K3S, une version allégée de Kubernetes est utilisé en tant que reverse proxy.
+- K3S, une version allégée de Kubernetes est utilisé en tant que qu'orchestrateur.
 - Prometheus et Grafana se chargent de l'observabilité de la machine virtuelle.
