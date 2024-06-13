@@ -1,0 +1,26 @@
+[2024-06-13 11:46:48,576] {taskinstance.py:1032} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.download_dataset_task scheduled__2024-06-07T00:00:00+00:00 [queued]>
+[2024-06-13 11:46:48,586] {taskinstance.py:1032} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.download_dataset_task scheduled__2024-06-07T00:00:00+00:00 [queued]>
+[2024-06-13 11:46:48,586] {taskinstance.py:1238} INFO - 
+--------------------------------------------------------------------------------
+[2024-06-13 11:46:48,586] {taskinstance.py:1239} INFO - Starting attempt 1 of 2
+[2024-06-13 11:46:48,587] {taskinstance.py:1240} INFO - 
+--------------------------------------------------------------------------------
+[2024-06-13 11:46:48,609] {taskinstance.py:1259} INFO - Executing <Task(BashOperator): download_dataset_task> on 2024-06-07 00:00:00+00:00
+[2024-06-13 11:46:48,619] {standard_task_runner.py:52} INFO - Started process 198 to run task
+[2024-06-13 11:46:48,634] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_gcs_dag', 'download_dataset_task', 'scheduled__2024-06-07T00:00:00+00:00', '--job-id', '346', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion.py', '--cfg-path', '/tmp/tmpf4ab260i', '--error-file', '/tmp/tmpr1_impis']
+[2024-06-13 11:46:48,643] {standard_task_runner.py:77} INFO - Job 346: Subtask download_dataset_task
+[2024-06-13 11:46:48,711] {logging_mixin.py:109} INFO - Running <TaskInstance: data_ingestion_gcs_dag.download_dataset_task scheduled__2024-06-07T00:00:00+00:00 [running]> on host e092adbea91d
+[2024-06-13 11:46:48,792] {taskinstance.py:1426} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=data_ingestion_gcs_dag
+AIRFLOW_CTX_TASK_ID=download_dataset_task
+AIRFLOW_CTX_EXECUTION_DATE=2024-06-07T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-06-07T00:00:00+00:00
+[2024-06-13 11:46:48,794] {subprocess.py:62} INFO - Tmp dir root location: 
+ /tmp
+[2024-06-13 11:46:48,794] {subprocess.py:74} INFO - Running command: ['bash', '-c', 'curl -sSL https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=6RmAG7GJNkjXhOt5pYF8xPooXDpEpWt1 > /opt/***/new_york_times_most_viewed_2024-06-13_11-46-48.json']
+[2024-06-13 11:46:48,807] {subprocess.py:85} INFO - Output:
+[2024-06-13 11:46:49,781] {subprocess.py:93} INFO - Command exited with return code 0
+[2024-06-13 11:46:49,844] {taskinstance.py:1277} INFO - Marking task as SUCCESS. dag_id=data_ingestion_gcs_dag, task_id=download_dataset_task, execution_date=20240607T000000, start_date=20240613T114648, end_date=20240613T114649
+[2024-06-13 11:46:49,893] {local_task_job.py:154} INFO - Task exited with return code 0
+[2024-06-13 11:46:49,974] {local_task_job.py:264} INFO - 1 downstream tasks scheduled from follow-on schedule check
