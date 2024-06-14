@@ -35,9 +35,10 @@ jobs:
           GCP_PROJECT_ID: ${{ env.GCP_PROJECT_ID }}
           NYT_KEY: ${{ env.NYT_KEY }}
         run: |
-          docker build -t my-image \
+          cd airflow
+          docker-compose up --build -d \
             --build-arg GCP_GCS_BUCKET="${{ env.GCP_GCS_BUCKET }}" \
             --build-arg GCP_PROJECT_ID="${{ env.GCP_PROJECT_ID }}" \
             --build-arg NYT_KEY="${{ env.NYT_KEY }}" \
             .
-          docker push my-image
+          docker compose push
