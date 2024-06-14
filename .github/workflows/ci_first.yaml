@@ -5,12 +5,18 @@ on:
     branches:
       - main
 
+env:
+  GCP_GCS_BUCKET: ${{ secrets.GCP_GCS_BUCKET }}
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  NYT_KEY: ${{ secrets.NYT_KEY }}
+
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -23,12 +29,15 @@ jobs:
       - name: Docker Login
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Deploy
+      - name: Build and push Docker image
         env:
-          GCP_GCS_BUCKET: ${{ secrets.GCP_GCS_BUCKET}}
-          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID}}
-          NYT_KEY: ${{ secrets.NYT_KEY }}
+          GCP_GCS_BUCKET: ${{ env.GCP_GCS_BUCKET }}
+          GCP_PROJECT_ID: ${{ env.GCP_PROJECT_ID }}
+          NYT_KEY: ${{ env.NYT_KEY }}
         run: |
-          cd airflow
-          docker-compose --env-file <(env | grep ^GCP_GCS_BUCKET= | grep ^GCP_PROJECT_ID= | grep ^ NYT_KEY=) build
-          docker-compose --env-file <(env | grep ^GCP_GCS_BUCKET= | grep ^GCP_PROJECT_ID= | grep ^NYT_KEY=) push
+          docker build -t my-image \
+            --build-arg GCP_GCS_BUCKET="${{ env.GCP_GCS_BUCKET }}" \
+            --build-arg GCP_PROJECT_ID="${{ env.GCP_PROJECT_ID }}" \
+            --build-arg NYT_KEY="${{ env.NYT_KEY }}" \
+            .
+          docker push my-image
