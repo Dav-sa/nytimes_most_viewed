@@ -20,15 +20,15 @@ jobs:
       - name: Set up Docker
         uses: docker-practice/actions-setup-docker@master
 
-      - name: Run Docker Compose
-        run: |
-          cd airflow
-          docker-compose up --build -d
-
       - name: Docker Login
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Deploy
+        env:
+          GCP_GCS_BUCKET: ${{ secrets.GCP_GCS_BUCKET}}
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID}}
+          NYT_KEY: ${{ secrets.NYT_KEY }}
         run: |
           cd airflow
-             docker-compose push
+          docker-compose --env-file <(env | grep ^GCP_GCS_BUCKET= | grep ^GCP_PROJECT_ID= | grep ^ NYT_KEY=) build
+          docker-compose --env-file <(env | grep ^GCP_GCS_BUCKET= | grep ^GCP_PROJECT_ID= | grep ^NYT_KEY=) push
