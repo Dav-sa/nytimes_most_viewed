@@ -38,7 +38,7 @@ jobs:
           AIRFLOW_UID: ${{ env.AIRFLOW_UID }}
         run: |
           cd airflow
-          docker-compose up --build -d \
+          docker-compose build -d \
             --build-arg GCP_GCS_BUCKET="${{ env.GCP_GCS_BUCKET }}" \
             --build-arg GCP_PROJECT_ID="${{ env.GCP_PROJECT_ID }}" \
             --build-arg NYT_KEY="${{ env.NYT_KEY }}" \
